@@ -1,0 +1,19 @@
+{% extends "LibCatalogo/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="fw-bolder">Bienvenido a la seccion Formulario de Autores</h1>
+<p class="lead">Proyecto pre-final Coder-Python / Comision 31105 / grupo Fernando - Francisco</p>
+{% endblock %}
+
+{% block contenido1 %}
+<h2>Carga de Autores</h2>
+<p class="lead">Carga los datos solicitados para ingresar un nuevo autor al catalogo</p>
+<form action="{% url 'autoresf' %}" method="POST"> {% csrf_token %}
+<table>
+    {{ a_formulario.as_table }}
+</table>
+<input type="submit" value="Enviar">
+</form>
+{% endblock %}

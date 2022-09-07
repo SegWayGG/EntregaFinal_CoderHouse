@@ -1,0 +1,19 @@
+{% extends "LibCatalogo/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="fw-bolder">Bienvenido a la seccion Formulario de Generos</h1>
+<p class="lead">Proyecto pre-final Coder-Python / Comision 31105 / grupo Fernando - Francisco</p>
+{% endblock %}
+
+{% block contenido1 %}
+<h2>Carga de Generos</h2>
+<p class="lead">Carga los datos solicitados para ingresar un nuevo genero al catalogo</p>
+<form action="{% url 'generosf' %}" method="POST"> {% csrf_token %}
+<table>
+    {{ g_formulario.as_table }}
+</table>
+<input type="submit" value="Enviar">
+</form>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends "LibCatalogo/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="fw-bolder">Resultado de la busqueda de autor por Nombre</h1>
+<p class="lead">Proyecto pre-final Coder-Python / Comision 31105 / grupo Fernando - Francisco</p>
+{% endblock %}
+
+{% block contenido1 %}
+<h2>AUTORES ENCONTRADOS</h2>
+
+{% if autor_name_k %}
+<ul>
+    {% for nombre_v in autor_name_k %}
+        <li>Nombre: {{ nombre_v.nombre }}</li>
+        <li>Apellido: {{ nombre_v.apellido }}</li>
+        <li>Fecha de Nacimiento: {{ nombre_v.fecha_n }}</li>
+        <li>Fecha de Defuncion: {{ nombre_v.fecha_d }}</li>
+        <br>
+    {% endfor %}
+</ul>
+{% else %}
+<p>NO SE ENCONTRARON AUTORES CON ESOS DATOS</p>
+{% endif %}
+{% endblock %}

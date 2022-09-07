@@ -1,0 +1,43 @@
+{% extends "LibCatalogo/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="fw-bolder">Bienvenido a la seccion Busqueda de Usuario</h1>
+<p class="lead">Proyecto pre-final Coder-Python / Comision 31105 / grupo Fernando - Francisco</p>
+{% endblock %}
+
+{% block contenido1 %}
+<h2>Formulario de busqueda de Usuarios por nombre/apellido/alias</h2>
+
+<ul>
+    
+        <li><label><span class="label-body">Nombre </span><input type="radio" name="usuario_byname" onclick='go_buscar_u_por_nombre()'></label></li> 
+        <script>
+            function go_buscar_u_por_nombre() {
+                 window.location = "{% url 'buscar_u_by_n' %}";
+            }
+       </script>
+
+        <li><label><span class="label-body">Apellido </span><input type="radio" name="usuario_bysurename" onclick='go_buscar_u_por_apellido()'></label></li>
+        <script>
+            function go_buscar_u_por_apellido() {
+                 window.location = "{% url 'buscar_u_by_s' %}";
+            }
+       </script>
+
+        <li><label><span class="label-body">Alias </span><input type="radio" name="usuario_byalias" onclick='go_buscar_u_por_alias()'></label></li>
+        <script>
+            function go_buscar_u_por_alias() {
+                 window.location = "{% url 'buscar_u_by_a' %}"; 
+            }
+       </script>
+    
+</ul>
+
+<p class="lead">Carga los datos solicitados para buscar un usuario por apellido</p>
+<form action="{% url 'result_u_by_s' %}" method="POST"> {% csrf_token %}
+    <input type="text" name="usuario_bysurename" placeholder="Apellido">
+    <input type="submit" value="Buscar">
+</form>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "LibCatalogo/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="fw-bolder">Resultado de la busqueda de Generos literarios cargados</h1>
+<p class="lead">Proyecto pre-final Coder-Python / Comision 31105 / grupo Fernando - Francisco</p>
+{% endblock %}
+
+{% block contenido1 %}
+<h2>GENEROS ENCONTRADOS</h2>
+
+{% if generos_k %}
+<ul>
+    {% for genero_x in generos_k %}
+        <li>Genero: {{ genero_x.nombre_g }}</li>
+        <br>
+    {% endfor %}
+</ul>
+{% else %}
+<p>NO SE ENCONTRARON GENEROS</p>
+{% endif %}
+{% endblock %}

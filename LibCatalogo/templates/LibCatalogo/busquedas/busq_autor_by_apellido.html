@@ -1,0 +1,43 @@
+{% extends "LibCatalogo/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="fw-bolder">Bienvenido a la seccion Busqueda de Autor por apellido</h1>
+<p class="lead">Proyecto pre-final Coder-Python / Comision 31105 / grupo Fernando - Francisco</p>
+{% endblock %}
+
+{% block contenido1 %}
+<h2>Formulario de busqueda de autores por nombre/apellido/fecha de nacimiento</h2>
+
+<ul>
+    
+    <li><label><span class="label-body">Nombre </span><input type="radio" name="autor_by_name" onclick='go_buscar_a_por_nombre()'></label></li> 
+    <script>
+        function go_buscar_a_por_nombre() {
+             window.location = "{% url 'buscar_a_by_n' %}";
+        }
+   </script>
+
+    <li><label><span class="label-body">Apellido </span><input type="radio" name="autor_by_apellido" onclick='go_buscar_a_por_apellido()'></label></li>
+    <script>
+        function go_buscar_a_por_apellido() {
+             window.location = "{% url 'buscar_a_by_a' %}";
+        }
+   </script>
+
+    <li><label><span class="label-body">Fecha de nacimiento </span><input type="radio" name="autor_by_fn" onclick='go_buscar_a_por_fechan()'></label></li>
+    <script>
+        function go_buscar_a_por_fechan() {
+             window.location = "{% url 'buscar_a_by_fn' %}"; 
+        }
+   </script>
+
+</ul>
+
+<p class="lead">Carga los datos solicitados para realizar una busqueda de autor por nombre</p>
+<form action="{% url 'result_a_by_a' %}" method="POST"> {% csrf_token %}
+    <input type="text" name="autor_by_apellido" placeholder="Apellido Autor">
+    <input type="submit" value="Buscar">
+</form>
+{% endblock %}
