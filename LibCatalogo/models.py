@@ -1,5 +1,6 @@
 from django.db import models
 import uuid
+from django.contrib.auth.models import User
 
 
 # Create your models here.
@@ -14,6 +15,10 @@ class Libros(models.Model):
 
     def __str__(self):
         return self.titulo+" "+self.autor
+
+class Portada (models.Model):
+    libro=models.ForeignKey(Libros, on_delete=models.CASCADE)
+    imagen=models.ImageField(upload_to='portadas')
 
 class Autores(models.Model):
     nombre=models.CharField(max_length=50)

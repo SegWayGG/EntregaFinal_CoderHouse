@@ -4018,6 +4018,7 @@ textarea.form-control-lg {
 .nav-fill .nav-item .nav-link,
 .nav-justified .nav-item .nav-link {
   width: 100%;
+  margin-left: 19px;
 }
 
 .tab-content > .tab-pane {

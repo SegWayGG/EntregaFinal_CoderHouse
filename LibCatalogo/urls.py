@@ -34,6 +34,7 @@ urlpatterns = [
     path('result_l_by_t/', f_resultado_lib_by_title, name='result_l_by_t'),
     path('result_l_by_g/', f_resultado_lib_by_gen, name='result_l_by_g'),
     path('result_l_by_a/', f_resultado_lib_by_autor, name='result_l_by_a'),
+    path('full_biblio/', read_biblioteca, name='full_biblio'),
 
     #Urls de busqueda de autores
     path('buscar_a_by_n/', f_busqueda_autor_by_nombre, name='buscar_a_by_n'),

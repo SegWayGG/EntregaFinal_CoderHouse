@@ -1,0 +1,25 @@
+{% extends "LibCatalogo/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="fw-bolder">Biblioteca completa!</h1>
+<!-- <p class="lead">Proyecto pre-final Coder-Python / Comision 31105 / grupo Fernando - Francisco</p> -->
+{% endblock %}
+
+{% block contenido1 %}
+<h3>Esta es toda nuestra selección de libros: </h3>
+
+{% if libros %}
+<ul>
+    {% for titulo in libros %}
+        <li>Titulo: {{ titulo.titulo }}</li>
+        <li>Autor: {{ titulo.autor }}</li>
+        <li>Genero: {{ titulo.genero }}</li>
+        <br>
+    {% endfor %}
+</ul>
+{% else %}
+<p>NO SE ENCONTRARON TITULOS</p>
+{% endif %}
+{% endblock %}

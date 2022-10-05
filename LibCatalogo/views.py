@@ -3,6 +3,16 @@ from .forms import *
 from .models import *
 from django.http import HttpResponse
 
+#from django.urls import reverse_lazy
+
+#from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
+
+#from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth import login, logout, authenticate
+
+#from django.contrib.auth.mixins import LoginRequiredMixin
+from django.contrib.auth.decorators import login_required
+
 # Create your views here.
 
 def inicio(request):
@@ -126,6 +136,11 @@ def f_resultado_lib_by_autor(request):
     autor_libro_v=Libros.objects.filter(autor__icontains=lib_by_autor_v)
     return render(request, "LibCatalogo/busquedas/resultado_busq_lib_by_autor.html", {"autor_libro_k":autor_libro_v})
 
+#Vista para ver biblioteca completa
+def read_biblioteca(request):
+    libros=Libros.objects.all()
+    return render (request, "LibCatalogo/full_biblio.html", {"libros":libros})
+
 #--------------------------------------------------------------------
 #Vistas de formularios de busqueda de autores
 def f_busqueda_autor_by_nombre(request):
@@ -204,8 +219,26 @@ def f_resultado_usuario_byalias(request):
     usuario_alias_v=Usuarios.objects.filter(alias__icontains=usuario_byalias_v)
     return render(request, "LibCatalogo/busquedas/resultado_usuario_byalias.html", {"usuario_alias_k":usuario_alias_v})
 
+#--------------------------------------------------------------------
+#Vistas para editar usuario
 
-
+@login_required
+def editarUser(request):
+    usuario=request.user
+    if request.method=="POST":
+        form=UserEditForm(request.POST)
+        if form.is_valid():
+            info=form.cleaned_data
+            usuario.email=info["email"]
+            usuario.password1=info["password1"]
+            usuario.password2=info["password2"]
+            usuario.first_name=info["first_name"]
+            usuario.last_name=info["last_name"]
+            usuario.save()
+            return render(request, "AppCoder/inicio.html", {"mensaje":"Perfil editado correctamente"})
+    else:
+        form= UserEditForm(instance=usuario)
+    return render(request,"LibCatalogo/edit_user.html", {"formulario":form, "usuario":usuario})
 
     
 
