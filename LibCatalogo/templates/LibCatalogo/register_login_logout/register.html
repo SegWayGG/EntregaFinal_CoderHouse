@@ -1,0 +1,20 @@
+{% extends "LibCatalogo/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="fw-bolder">Bienvenido a la seccion REGISTER</h1>
+<p class="lead">Proyecto pre-final Coder-Python / Comision 31105 / grupo Fernando - Francisco</p>
+{% endblock %}
+
+{% block contenido1 %}
+<h2>REGISTER</h2>
+<p class="lead">REGISTER</p>
+<form action="{% url 'register' %}" method="POST"> {% csrf_token %}
+    <table>
+        {{ formulario.as_table }}
+    </table>
+    <button type="submit" class="btn btn-success" style="margin-top: 5px;"> REGISTRARSE </button>
+</form>
+<h2>{{ mensaje }}</h2>
+{% endblock %}

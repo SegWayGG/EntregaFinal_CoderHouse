@@ -15,6 +15,7 @@ Including another URLconf
 """
 from django.urls import path
 from LibCatalogo.views import *
+from django.contrib.auth.views import LogoutView
 
 
 urlpatterns = [
@@ -59,4 +60,9 @@ urlpatterns = [
     path('result_u_by_n/', f_resultado_usuario_byname, name='result_u_by_n'),
     path('result_u_by_s/', f_resultado_usuario_bysurename, name='result_u_by_s'),
     path('result_u_by_a/', f_resultado_usuario_byalias, name='result_u_by_a'),
+
+    #Login Register Loguot
+    path('login/', loguin_request, name='login'),
+    path('register/', register, name='register'),
+    path('logout/', LogoutView.as_view(template_name='C:/Users/SegWay/Desktop/CoderHouse/PreentregaFinal/Entrega1_Albano/LibCatalogo/templates/LibCatalogo/register_login_logout/logout.html'), name='logout'),
 ]

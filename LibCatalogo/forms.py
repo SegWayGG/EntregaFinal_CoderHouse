@@ -35,6 +35,16 @@ class UsuariosForm(forms.Form):
     correo= forms.EmailField()
     contrasenia = forms.CharField(label="Password", widget=forms.PasswordInput, strip=False, max_length=10)
 
+class UserRegisterForm(UserCreationForm):
+    email = forms.EmailField()
+    password1= forms.CharField(label="Ingrese Contraseña", widget=forms.PasswordInput)
+    password2= forms.CharField(label="Repita Contraseña", widget=forms.PasswordInput)
+
+    class Meta:
+        model = User
+        fields = ['username', 'email', 'password1', 'password2']
+        help_texts = {k:"" for k in fields}
+
 class UserEditForm(UserCreationForm):
     email = forms.EmailField()
     password1= forms.CharField(label="Ingrese Contraseña", widget=forms.PasswordInput)

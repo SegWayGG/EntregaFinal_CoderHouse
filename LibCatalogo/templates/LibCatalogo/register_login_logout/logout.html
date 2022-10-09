@@ -1,0 +1,13 @@
+{% extends "LibCatalogo/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+<h1 class="mb-5">LOGOUT</h1>
+{% endblock %}
+
+{% block contenido1 %}
+<h1>TE DESLOGUEASTE CORRECTAMENTE</h1>
+<h2>{{ mensaje }}</h2>
+<a type="button" class="btn btn-outline-secondary" href="{% url 'inicio'%}" role="button" style="margin-top: 5px;" >inicio</a>
+{% endblock %}

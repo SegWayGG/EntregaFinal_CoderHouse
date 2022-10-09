@@ -7,11 +7,12 @@ from django.http import HttpResponse
 
 #from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 
-#from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
 
 #from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 # Create your views here.
 
@@ -112,6 +113,17 @@ def f_busqueda_lib_by_gen(request):
 def f_busqueda_lib_by_autor(request):
     return render(request, "LibCatalogo/busquedas/busq_lib_by_autor.html")
 
+#----------------------------------------------------------------
+'''
+def filter_set(request):
+    ingreso=request.POST["lib_by_title"]
+    titulo_libro=Libros.objects.filter(titulo__icontains=ingreso)
+    genero_libro=Libros.objects.filter(genero__icontains=ingreso)
+    autor_libro=Libros.objects.filter(autor__icontains=ingreso)
+    return render(request, "LibCatalogo/busquedas/resultado_busq_lib_by_title.html", {"tituloLibro": titulo_libro, "generoLibro": genero_libro, "autorLibro": autor_libro})
+'''
+
+
 #Esta es la que me muestra los resultados de titulos buscando por titulo
 def f_resultado_lib_by_title(request):
     lib_by_title_v=request.POST["lib_by_title"]
@@ -119,6 +131,7 @@ def f_resultado_lib_by_title(request):
     #__icontains es para busquedas aproximadas
     titulo_libro_v=Libros.objects.filter(titulo__icontains=lib_by_title_v)
     return render(request, "LibCatalogo/busquedas/resultado_busq_lib_by_title.html", {"titulo_libro_k":titulo_libro_v})
+#----------------------------------------------------------------
 
 #Esta es la que me muestra los resultados de titulos buscando por genero
 def f_resultado_lib_by_gen(request):
@@ -240,7 +253,38 @@ def editarUser(request):
         form= UserEditForm(instance=usuario)
     return render(request,"LibCatalogo/edit_user.html", {"formulario":form, "usuario":usuario})
 
-    
+### Loguin Register Logout ###
 
+def loguin_request(request):
+    if request.method=="POST":
+        form=AuthenticationForm(request, data=request.POST)
+        if form.is_valid():
+            usu=request.POST["username"]
+            clave=request.POST["password"]
 
+            usuario=authenticate(username=usu, password=clave)
+            if usuario is not None:
+                login(request, usuario)
+                return render(request, 'LibCatalogo/inicio.html', {'mensaje':f"Bienvenido {usuario}"})
+            else:
+                return render(request, "LibCatalogo/register_login_logout/login.html", {"formulario":form, "mensaje":"Usuario o contraseña incorrectos"})
+        else:
+            return render(request, "LibCatalogo/register_login_logout/login.html", {"formulario":form, "mensaje":"Usuario o contraseña incorrectos"})
+
+    else:
+        form=AuthenticationForm()
+        return render(request, "LibCatalogo/register_login_logout/login.html", {"formulario":form})
+
+def register(request):
+    if request.method=="POST":
+        form=UserRegisterForm(request.POST)
+        if form.is_valid():
+            username=form.cleaned_data.get('username')
+            form.save()
+            return render(request, "LibCatalogo/inicio.html", {"mensaje":f"Usuario {username} creado correctamente"})
+        else:
+            return render(request, "LibCatalogo/register_login_logout/register.html", {"formulario":form, "mensaje":"FORMULARIO INVALIDO"})
+    else:
+        form=UserRegisterForm()
+        return render(request, "LibCatalogo/register_login_logout/register.html", {"formulario":form})
 

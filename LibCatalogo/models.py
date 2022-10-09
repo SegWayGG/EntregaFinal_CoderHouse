@@ -16,9 +16,12 @@ class Libros(models.Model):
     def __str__(self):
         return self.titulo+" "+self.autor
 
+'''
+#FALTA RESOLVER! Me tira error en el admin.
 class Portada (models.Model):
     libro=models.ForeignKey(Libros, on_delete=models.CASCADE)
     imagen=models.ImageField(upload_to='portadas')
+'''
 
 class Autores(models.Model):
     nombre=models.CharField(max_length=50)
