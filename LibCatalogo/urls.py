@@ -24,10 +24,12 @@ urlpatterns = [
     path('generos/', generos, name='generos'),
     path('usuarios/', usuario, name='usuarios'),
     path('', inicio, name='inicio'),
+
     #path('inicio/', inicio, name='inicio'),
     path('librosf/', libros_f, name='librosf'),
     path('autoresf/', autores_f, name='autoresf'),
     path('generosf/', generos_f, name='generosf'),
+
     #Urls de busquedas de libros
     path('buscar_l_by_t/', f_busqueda_lib_by_title, name='buscar_l_by_t'),
     path('buscar_l_by_g/', f_busqueda_lib_by_gen, name='buscar_l_by_g'),
@@ -52,6 +54,7 @@ urlpatterns = [
 
 
     path('usuarios_f/', usuarios_f, name='usuariosf'),
+
     #Urls de busqueda de usuarios
     path('buscar_u_by_n/', f_busqueda_usuario_byname, name='buscar_u_by_n'),
     path('buscar_u_by_s/', f_busqueda_usuario_bysurename, name='buscar_u_by_s'),
@@ -65,4 +68,5 @@ urlpatterns = [
     path('login/', loguin_request, name='login'),
     path('register/', register, name='register'),
     path('logout/', LogoutView.as_view(template_name='C:/Users/SegWay/Desktop/CoderHouse/PreentregaFinal/Entrega1_Albano/LibCatalogo/templates/LibCatalogo/register_login_logout/logout.html'), name='logout'),
+    path('editUser/', editUser, name='editUser'),
 ]

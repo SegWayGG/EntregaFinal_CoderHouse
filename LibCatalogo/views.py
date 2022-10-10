@@ -236,19 +236,25 @@ def f_resultado_usuario_byalias(request):
 #Vistas para editar usuario
 
 @login_required
-def editarUser(request):
+def editUser(request):
     usuario=request.user
     if request.method=="POST":
         form=UserEditForm(request.POST)
         if form.is_valid():
             info=form.cleaned_data
+            ''' 
+            No le permito cambiar usuario porque sino me pide que si o si lo cambie cuando quiero guardar.
+            usuario.username=info["username"]
+            '''
             usuario.email=info["email"]
             usuario.password1=info["password1"]
             usuario.password2=info["password2"]
             usuario.first_name=info["first_name"]
             usuario.last_name=info["last_name"]
             usuario.save()
-            return render(request, "AppCoder/inicio.html", {"mensaje":"Perfil editado correctamente"})
+            return render(request, "LibCatalogo/inicio.html", {"mensaje":"Perfil editado correctamente"})
+        else:
+            return render(request,"LibCatalogo/edit_user.html", {"formulario":form, "usuario":usuario, "mensaje":"FORMULARIO INVÁLIDO"})
     else:
         form= UserEditForm(instance=usuario)
     return render(request,"LibCatalogo/edit_user.html", {"formulario":form, "usuario":usuario})

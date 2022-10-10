@@ -46,13 +46,17 @@ class UserRegisterForm(UserCreationForm):
         help_texts = {k:"" for k in fields}
 
 class UserEditForm(UserCreationForm):
-    email = forms.EmailField()
-    password1= forms.CharField(label="Ingrese Contraseña", widget=forms.PasswordInput)
-    password2= forms.CharField(label="Repita Contraseña", widget=forms.PasswordInput)
-    first_name=forms.CharField(label='Modificar Nombre')
-    last_name=forms.CharField(label='Modificar Apellido')
+    ''' 
+    No le permito cambiar usuario porque sino me pide que si o si lo cambie cuando quiero guardar.
+    username = forms.CharField(label='Nombre de usuario')
+    '''
+    email = forms.EmailField(label='Direccion de correo')
+    password1= forms.CharField(label='Ingrese su contraseña', widget=forms.PasswordInput)
+    password2= forms.CharField(label='Repetir la contraseña', widget=forms.PasswordInput)
+    first_name=forms.CharField(label='Nombre real')
+    last_name=forms.CharField(label='Apellido real')
 
     class Meta:
         model = User
-        fields = [ 'email', 'password1', 'password2', 'first_name', 'last_name']
+        fields = ['email', 'password1', 'password2', 'first_name', 'last_name']
         help_texts = {k:"" for k in fields} 

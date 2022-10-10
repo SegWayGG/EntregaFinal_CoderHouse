@@ -3,17 +3,17 @@
 {% load static %}
 
 {% block titulo %}
-<h1 class="fw-bolder">Editar perfil de {{ alias }}</h1>
+<h1 class="fw-bolder">Editar perfil de {{ usuario }}</h1>
 <p class="lead">Proyecto pre-final Coder-Python / Comision 31105 / grupo Fernando - Francisco</p>
 {% endblock %}
 
 {% block contenido1 %}
-<h2>FORMULARIO DE EDICIÓN</h2>
-<h3> {{ mensaje }} </h3>
-<form action="{% url 'editarUser' %}" method="POST"> {% csrf_token %}
-<table>
-    {{ u_formulario.as_table }}
-</table>
-<input type="submit" value="Guardar">
+<h2>FORMULARIO DE EDICION</h2>
+<h3>{{ mensaje }}</h3>
+<form action="{% url 'editUser' %}" method="POST"> {% csrf_token %}
+    <table>
+        {{ formulario.as_table }}
+    </table>
+    <input type="submit" value="Guardar cambios" class="btn btn-success">
 </form>
 {% endblock %}
