@@ -35,10 +35,11 @@
                         {% if user.is_authenticated %}
                         <div class="dropdown" style="height: 25px;">
                             <button class="btn btn-dark dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" style="width: 75%; margin-top: -7px; padding-right: 5px;">
-                              <img src ="\static\LibCatalogo\assets\img\userLogin.png" style="width: 72%;">
+                              <img src ="{{ avatar }}" style="width: 30px; height: 30px;">
                             </button>
                             <ul class="dropdown-menu dropdown-menu-dark">
                               <li><a class="dropdown-item" href="{% url 'editUser'%}">Editar usuario</a></li>
+                              <li><a class="dropdown-item" href="{% url 'agregarAvatar'%}">Editar avatar</a></li>
                               <li><a class="dropdown-item" href="{% url 'logout'%}">Cerrar sesion</a></li>
                             </ul>
                         </div>

@@ -13,7 +13,11 @@
 
 {% block contenido1 %}
 {{ mensaje }}
+
 <h2>Que vamos a encontar en la seccion libros?</h2>
+{% if user.is_authenticated %}
+
+{% endif %}
 <p class="lead">En esta seccion encontraremos todos los titulos que se encuentran disponibles en la Lib!</p>
 <ul>
     <li>Registrate para acceder a importantes beneficios!</li>

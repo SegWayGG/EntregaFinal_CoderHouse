@@ -69,4 +69,5 @@ urlpatterns = [
     path('register/', register, name='register'),
     path('logout/', LogoutView.as_view(template_name='C:/Users/SegWay/Desktop/CoderHouse/PreentregaFinal/Entrega1_Albano/LibCatalogo/templates/LibCatalogo/register_login_logout/logout.html'), name='logout'),
     path('editUser/', editUser, name='editUser'),
+    path('agregarAvatar/', agregarAvatar, name='agregarAvatar'),
 ]

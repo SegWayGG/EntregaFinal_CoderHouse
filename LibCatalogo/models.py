@@ -51,5 +51,8 @@ class Usuarios(models.Model):
         return self.nombre+" "+self.apellido
 
 
-
-
+class Avatar(models.Model):
+    #Este user apunta a un usuario. Es decir tiene una key de un usuario en particular. Django va a relacionar un usuario con el avatar
+    #Relacionar campos de la base de datos
+    user=models.ForeignKey(User, on_delete=models.CASCADE)
+    imagen= models.ImageField(upload_to='avatares')
