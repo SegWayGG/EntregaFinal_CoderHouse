@@ -1,6 +1,7 @@
 from django.db import models
 import uuid
 from django.contrib.auth.models import User
+from ckeditor.fields import RichTextField
 
 
 # Create your models here.
@@ -10,9 +11,10 @@ class Libros(models.Model):
     titulo=models.CharField(max_length=50)
     genero=models.CharField(max_length=30)
     autor=models.CharField(max_length=50)
-    sumario=models.TextField(max_length=250)
+    descripcion=RichTextField(max_length=300)
     idioma=models.CharField(max_length=50)
-
+    portada= models.ImageField(upload_to='portadas') 
+    
     def __str__(self):
         return self.titulo+" "+self.autor
 

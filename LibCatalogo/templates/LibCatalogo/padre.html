@@ -9,7 +9,6 @@
         <meta name="author" content="" />
         <title>LibVirtual - Coder 31105 Fernando-Francisco</title>
       <link rel="icon" type="image/x-icon" href="{% static 'LibCatalogo/assets/favicon.ico' %}" />
-        <!-- Core theme CSS (includes Bootstrap)-->
         <link href="{% static 'LibCatalogo/css/styles.css' %}" rel="stylesheet" />
     </head>
     <body style="background-color:#d8b68c;" id="page-top">
@@ -17,8 +16,6 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
             <div class="container px-1">
                 <a href="{% url 'inicio'%}"><img src="\static\LibCatalogo\assets\img\logo.png" width="45px" height="40px" style="margin-left: -20px;"> </a> <!-- Corregir lo del margin-left, se tiene que poder hacer de otra forma -->
-                <!-- <a class="navbar-brand" href="{% url 'inicio'%}">Inicio</a> -->
-                <!-- <a class="navbar-brand" href="{% url 'usuarios'%}">Usuarios</a> -->
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div  class="collapse navbar-collapse" id="navbarResponsive">
                     <nav class="navbar-nav ms-auto">
@@ -51,25 +48,15 @@
                 </div>
             </div>
         </nav>
-        <!-- Header-->
-        <!-- Ejemplo del profe - <div_class_="col-lg-6 order-lg-2 text-white showcase-img"_style_="background-image: url('{% static 'AppCoder/assets/img/bg-showcase-2.jpg' %}')"></div> -->
-        <!-- <header class="bg-primary bg-gradient text-white"> -->
-        <!--<header class="col-lg-6 order-lg-2 text-white showcase-img" style="backgrond-image: url('{% static 'LibCatalogo/assets/libros2.jpg' %}')">-->
+
         <header class="pt100 pb100 parallax-window-2" style="background-image: url({% static 'LibCatalogo/assets/img/fondo_main.png' %}); background-size: 100% 100%;"></header>
           
             <div class="container px-4 text-center">
                 {% block titulo %}
 
                 {% endblock %}
-                <!-- <a class="btn btn-lg btn-light" href="{% url 'libros'%}">Libros</a> -->
-                <!-- btn btn-lg btn-success -->
-                <!-- btn btn-lg btn-danger -->
-                <!-- btn btn-lg btn-dark -->
-                <!-- btn btn-lg btn-warning -->
                 
                 <a class="btn btn-lg btn-success" href="{% url 'libros'%}">Libros</a>
-                <a class="btn btn-lg btn-light" href="{% url 'autores'%}">Autores</a>
-                <a class="btn btn-lg btn-light" href="{% url 'generos'%}">Generos</a>
                 
                 {% block exito %}
                 
@@ -89,29 +76,12 @@
                 </div>
             </div>
         </section>
-        <!-- Services section-->
-        <section class="bg-light" id="services">
-            <div class="container px-4">
-                <div class="row gx-4 justify-content-center">
-                    <div class="col-lg-8">
-                    
-                        <h2>Seccion en construccion</h2>
-                        <p class="lead">Elementos de esta seccion en contruccion</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Seccion de contacto-->
-        <section id="contact">
-            <div class="container px-4">
-                <div class="row gx-4 justify-content-center">
-                    <div class="col-lg-8">
-                        <h2>Seccion en construccion</h2>
-                        <p class="lead">Elementos de esta seccion en contruccion</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+
+
+
+
+
+        
         <!-- Footer-->
         <footer class="py-5 bg-dark">
             <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>

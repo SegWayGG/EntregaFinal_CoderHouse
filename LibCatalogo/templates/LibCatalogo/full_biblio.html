@@ -13,6 +13,7 @@
 {% if libros %}
 <ul>
     {% for titulo in libros %}
+        <li> <img src= "{{ titulo.portada }}"> </li>
         <li>Titulo: {{ titulo.titulo }}</li>
         <li>Autor: {{ titulo.autor }}</li>
         <li>Genero: {{ titulo.genero }}</li>
