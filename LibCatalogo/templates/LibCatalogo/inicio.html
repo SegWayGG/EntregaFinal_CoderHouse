@@ -3,22 +3,33 @@
 {% load static %}
 
 {% block titulo %}
-<img src="\static\LibCatalogo\assets\img\envio_cuotas.png" style="width: 100%; margin-top: 10px; margin-bottom: 10px;">
+<img src="\static\LibCatalogo\assets\img\envio_cuotas.png" style="width: 100%; margin-top: 10px;">
+<div>
+    <h2 class="display-6"  style="text-align: center; margin-top: 15px;">Disfrutá de las mejores lecturas</h2>
+</div>
 {% endblock %}
 
 {% block contenido1 %}
-{{ mensaje }}
+    {{ mensaje }}
 
-<h2>Que vamos a encontar en la seccion libros?</h2>
-{% if user.is_authenticated %}
+    <div>
+    <h3 style="font-family: Impact; margin-left: 15px; font-size: 40px; color: #b67d37"> NOVEDADES </h3>
+    </div>
 
-{% endif %}
-<p class="lead">En esta seccion encontraremos todos los titulos que se encuentran disponibles en la Lib!</p>
-<ul>
-    <li>Registrate para acceder a importantes beneficios!</li>
-    <li>Podes realizar busquedas por titulo/autores/genero</li>
-    <li>Todos los dias se agregan nuevos titulos!</li>
-    <li>Subscrite y recibi por mail todas las novedades de la semana</li>
-</ul>
+    {% if libros %}
+        <ul position: relative; style= "list-style-type: none">
+                {% for titulo in libros %}
+                    <li style="width: 25%; position: relative; float:left; margin: 15px; width: 200px; text-align: center ">
+                        <div class="portada">
+                            <img src= "{{ titulo.portada }}">
+                            <br>
+                        </div>
+                        <div class="titulo">
+                            <a>{{ titulo.titulo }}</a>
+                        </div>
+                    </li>
+                {% endfor %}
+        </ul>
+    {% endif %}
 
 {% endblock %}

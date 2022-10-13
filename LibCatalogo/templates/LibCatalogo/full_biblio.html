@@ -11,14 +11,18 @@
 <h3>Esta es toda nuestra selección de libros: </h3>
 
 {% if libros %}
-<ul>
-    {% for titulo in libros %}
-        <li> <img src= "{{ titulo.portada }}"> </li>
-        <li>Titulo: {{ titulo.titulo }}</li>
-        <li>Autor: {{ titulo.autor }}</li>
-        <li>Genero: {{ titulo.genero }}</li>
-        <br>
-    {% endfor %}
+<ul position: relative; style= "list-style-type: none">
+        {% for titulo in libros %}
+            <li style="width: 25%; position: relative; float:left; margin: 15px; width: 200px; text-align: center ">
+                <div class="portada">
+                    <img src= "{{ titulo.portada }}">
+                    <br>
+                </div>
+                <div class="titulo">
+                    <a>{{ titulo.titulo }}</a>
+                </div>
+            </li>
+        {% endfor %}
 </ul>
 <!-- Solo se puede agregar libros si estas logueadx -->
 {% if user.is_authenticated %}

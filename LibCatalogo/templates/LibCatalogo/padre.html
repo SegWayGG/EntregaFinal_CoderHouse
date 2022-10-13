@@ -56,18 +56,16 @@
 
                 {% endblock %}
                 
-                <a class="btn btn-lg btn-success" href="{% url 'libros'%}">Libros</a>
-                
                 {% block exito %}
                 
                 {% endblock %}
             </div>
         </header>
         <!-- About section-->
-        <section id="about">
-            <div class="container px-4">
-                <div class="row gx-4 justify-content-left">
-                    <div class="col-lg-8">
+        <section id="about" style="width:1218px;">
+            <div class="wpb_wrapper">
+                <div class="row gx-2 justify-content-center" style="width:1218px;">
+                    <div class="col-lg-8" style="margin-top: -100px;width:1218px;">
                         {% block contenido1 %}
  
                         {% endblock %}
@@ -83,7 +81,7 @@
 
         
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
+        <footer class="py-3 bg-dark">
             <div class="container px-4"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2022</p></div>
         </footer>
         <!-- Bootstrap core JS-->

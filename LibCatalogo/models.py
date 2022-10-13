@@ -11,7 +11,7 @@ class Libros(models.Model):
     titulo=models.CharField(max_length=50)
     genero=models.CharField(max_length=30)
     autor=models.CharField(max_length=50)
-    descripcion=RichTextField(max_length=300)
+    #descripcion=RichTextField(max_length=300)
     idioma=models.CharField(max_length=50)
     portada= models.ImageField(upload_to='portadas') 
     

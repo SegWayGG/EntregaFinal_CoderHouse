@@ -11,12 +11,17 @@
 <h2>TITULOS ENCONTRADOS</h2>
 
 {% if titulo_libro_k %}
-<ul>
+<ul position: relative; style= "list-style-type: none">
     {% for titulo in titulo_libro_k %}
-        <li>Titulo: {{ titulo.titulo }}</li>
-        <li>Autor: {{ titulo.autor }}</li>
-        <li>Genero: {{ titulo.genero }}</li>
-        <br>
+    <li style="width: 25%; position: relative; float:left; margin: 15px; width: 200px; text-align: center ">
+        <div class="portada">
+            <img src= "{{ titulo.portada }}">
+            <br>
+        </div>
+        <div class="titulo">
+            <a>{{ titulo.titulo }}</a>
+        </div>
+    </li>
     {% endfor %}
 </ul>
 {% else %}

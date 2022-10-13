@@ -12,15 +12,15 @@ from django.contrib.auth import login, logout, authenticate
 
 #from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
-from django.contrib.auth.mixins import LoginRequiredMixin
-
 # Create your views here.
 
 def inicio(request):
-    return render(request, "LibCatalogo/inicio.html", {"avatar":obtenerAvatar(request)})
+    libros=Libros.objects.all()[5:]
+    return render(request, "LibCatalogo/inicio.html", {"libros":libros, "avatar":obtenerAvatar(request)})
 
 def libros(request):
     return render(request, "LibCatalogo/libros.html", {"avatar":obtenerAvatar(request)})
+
 
 #Vistas para formularios
 
