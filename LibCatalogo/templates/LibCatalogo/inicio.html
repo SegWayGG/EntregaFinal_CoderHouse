@@ -10,10 +10,12 @@
 {% endblock %}
 
 {% block contenido1 %}
-    {{ mensaje }}
+    <div style="margin-top: -40px">
+        <small style="font-style: italic; color: #4c371e; margin-left: 15px;"> {{ mensaje }} </small>
+    </div>
 
     <div>
-    <h3 style="font-family: Impact; margin-left: 15px; font-size: 40px; color: #b67d37"> NOVEDADES </h3>
+        <h3 style="font-family: Impact; margin-left: 15px; font-size: 40px; color: #b67d37"> NOVEDADES </h3>
     </div>
 
     {% if libros %}
@@ -25,7 +27,7 @@
                             <br>
                         </div>
                         <div class="titulo">
-                            <a>{{ titulo.titulo }}</a>
+                            <a href="{% url 'blogDetail' titulo.slug %}">{{ titulo.titulo }}</a>
                         </div>
                     </li>
                 {% endfor %}

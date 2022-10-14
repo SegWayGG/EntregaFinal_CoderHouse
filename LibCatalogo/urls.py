@@ -23,7 +23,6 @@ urlpatterns = [
     path('libros/', libros, name='libros'),
     path('', inicio, name='inicio'),
 
-    #path('inicio/', inicio, name='inicio'),
     path('librosf/', libros_f, name='librosf'),
 
     #Urls de busquedas de libros
@@ -39,6 +38,8 @@ urlpatterns = [
     path('agregarAvatar/', agregarAvatar, name='agregarAvatar'),
 
     path(r'^ckeditor/', include('ckeditor_uploader.urls')), 
+
+    path('blogDetail/<str:slug_url>', blog_detail, name='blogDetail'),
 ]
 
     

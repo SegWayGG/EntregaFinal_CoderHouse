@@ -54,15 +54,6 @@ def f_busqueda_lib_by_title(request):
     return render(request, "LibCatalogo/busquedas/busq_lib_by_title.html", {"avatar":obtenerAvatar(request)})
 
 #----------------------------------------------------------------
-'''
-def filter_set(request):
-    ingreso=request.POST["lib_by_title"]
-    titulo_libro=Libros.objects.filter(titulo__icontains=ingreso)
-    genero_libro=Libros.objects.filter(genero__icontains=ingreso)
-    autor_libro=Libros.objects.filter(autor__icontains=ingreso)
-    return render(request, "LibCatalogo/busquedas/resultado_busq_lib_by_title.html", {"tituloLibro": titulo_libro, "generoLibro": genero_libro, "autorLibro": autor_libro})
-'''
-
 
 ### Resultado de titulos ###
 
@@ -92,7 +83,8 @@ def editUser(request):
             usuario.first_name=info["first_name"]
             usuario.last_name=info["last_name"]
             usuario.save()
-            return render(request, "LibCatalogo/inicio.html", {"mensaje":"Perfil editado correctamente", "avatar":obtenerAvatar(request)})
+            libros=Libros.objects.all()[5:]
+            return render(request, "LibCatalogo/inicio.html", {"mensaje":"Perfil editado correctamente", "avatar":obtenerAvatar(request), 'libros':libros})
         else:
             return render(request,"LibCatalogo/edit_user.html", {"formulario":form, "usuario":usuario, "mensaje":"FORMULARIO INVÁLIDO", "avatar":obtenerAvatar(request)})
     else:
@@ -111,7 +103,8 @@ def loguin_request(request):
             usuario=authenticate(username=usu, password=clave)
             if usuario is not None:
                 login(request, usuario)
-                return render(request, 'LibCatalogo/inicio.html', {'mensaje':f"Bienvenido {usuario}"})
+                libros=Libros.objects.all()[5:]
+                return render(request, 'LibCatalogo/inicio.html', {'mensaje':f"Bienvenidx {usuario}", "avatar":obtenerAvatar(request), "libros":libros})
             else:
                 return render(request, "LibCatalogo/register_login_logout/login.html", {"formulario":form, "mensaje":"Usuario o contraseña incorrectos"})
         else:
@@ -127,7 +120,8 @@ def register(request):
         if form.is_valid():
             username=form.cleaned_data.get('username')
             form.save()
-            return render(request, "LibCatalogo/inicio.html", {"mensaje":f"Usuario {username} creado correctamente"})
+            libros=Libros.objects.all()[5:]
+            return render(request, "LibCatalogo/inicio.html", {"mensaje":f"Usuario {username} creado correctamente", "libros":libros})
         else:
             return render(request, "LibCatalogo/register_login_logout/register.html", {"formulario":form, "mensaje":"FORMULARIO INVALIDO"})
     else:
@@ -146,7 +140,8 @@ def agregarAvatar(request):
                 avatarViejo[0].delete()
             avatar=Avatar(user=request.user, imagen=formulario.cleaned_data['imagen'])
             avatar.save()
-            return render(request, 'LibCatalogo/inicio.html', {'usuario':request.user, 'mensaje':'AVATAR AGREGADO EXITOSAMENTE', "avatar": avatar.imagen.url})
+            libros=Libros.objects.all()[5:]
+            return render(request, 'LibCatalogo/inicio.html', {"mensaje": "Avatar modificado correctamente", 'usuario':request.user, "avatar": avatar.imagen.url, "libros":libros})
         else:
             return render(request, 'LibCatalogo/addAvatar.html', {'formulario':formulario, 'mensaje':'FORMULARIO INVALIDO'})
     else:
@@ -158,5 +153,11 @@ def obtenerAvatar(request):
     if len(lista)!=0:
         imagen=lista[0].imagen.url
     else:
-        imagen=None
+        imagen='/media/avatares/avatarpordefecto.jpg'
     return imagen
+
+### blog_detail ###
+
+def blog_detail(request, slug_url):
+    blog = Libros.objects.get(slug=slug_url)
+    return render (request, "LibCatalogo/blog_detail.html", {'blog':blog})

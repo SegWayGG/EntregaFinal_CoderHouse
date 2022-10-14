@@ -2,7 +2,8 @@ from django.db import models
 import uuid
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
-
+from datetime import date
+from django.template.defaultfilters import slugify
 
 # Create your models here.
 
@@ -14,10 +15,16 @@ class Libros(models.Model):
     #descripcion=RichTextField(max_length=300)
     idioma=models.CharField(max_length=50)
     portada= models.ImageField(upload_to='portadas') 
+    post_date= models.DateField(default=date.today)
+    slug=models.CharField(max_length=1000, null=True, blank=True)
     
     def __str__(self):
         return self.titulo+" "+self.autor
 
+    def save (self,*args, **kwargs):
+        if not self.slug:
+            self.slug = slugify(self.titulo + "-" + str(self.post_date))
+        return super().save(*args, **kwargs)
 '''
 #FALTA RESOLVER! Me tira error en el admin.
 class Portada (models.Model):
