@@ -11,9 +11,10 @@
 <h2>Carga de Libros</h2>
 <p class="lead">Carga los datos solicitados para ingresar un nuevo libro al catalogo</p>
 <form action="{% url 'librosf' %}" method="POST"> {% csrf_token %}
-<table>
-    {{ l_formulario.as_table }}
-</table>
+    <table>
+        {{ l_formulario.media }}
+        {{ l_formulario.as_table }}
+    </table>
 <input type="submit" value="Enviar">
 </form>
 {% endblock %}

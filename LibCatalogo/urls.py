@@ -37,8 +37,6 @@ urlpatterns = [
     path('editUser/', editUser, name='editUser'),
     path('agregarAvatar/', agregarAvatar, name='agregarAvatar'),
 
-    path(r'^ckeditor/', include('ckeditor_uploader.urls')), 
-
     path('blogDetail/<str:slug_url>', blog_detail, name='blogDetail'),
 ]
 

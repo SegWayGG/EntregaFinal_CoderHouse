@@ -1,0 +1,17 @@
+{% extends "LibCatalogo/padre.html" %}
+
+{% load static %}
+
+{% block titulo %}
+
+{% endblock %}
+
+{% block contenido1 %}
+<p class="lead">Formulario para actualizar información</p>
+<form action="{% url '#' %}" method="POST"> {% csrf_token %}
+<table>
+    {{ #.as_table }}
+</table>
+<input type="submit" value="Enviar">
+</form>
+{% endblock %}

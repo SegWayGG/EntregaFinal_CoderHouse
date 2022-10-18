@@ -19,7 +19,7 @@
                     <br>
                 </div>
                 <div class="titulo">
-                    <a>{{ titulo.titulo }}</a>
+                    <a href="{% url 'blogDetail' titulo.slug %}" style="text-decoration:none; color: black;">{{ titulo.titulo }}</a>
                 </div>
             </li>
         {% endfor %}

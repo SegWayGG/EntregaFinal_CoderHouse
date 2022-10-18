@@ -12,9 +12,9 @@ class Libros(models.Model):
     titulo=models.CharField(max_length=50)
     genero=models.CharField(max_length=30)
     autor=models.CharField(max_length=50)
-    #descripcion=RichTextField(max_length=300)
+    descripcion=RichTextField(max_length=300)
     idioma=models.CharField(max_length=50)
-    portada= models.ImageField(upload_to='portadas') 
+    portada= models.ImageField(upload_to='avatares')
     post_date= models.DateField(default=date.today)
     slug=models.CharField(max_length=1000, null=True, blank=True)
     
@@ -25,12 +25,6 @@ class Libros(models.Model):
         if not self.slug:
             self.slug = slugify(self.titulo + "-" + str(self.post_date))
         return super().save(*args, **kwargs)
-'''
-#FALTA RESOLVER! Me tira error en el admin.
-class Portada (models.Model):
-    libro=models.ForeignKey(Libros, on_delete=models.CASCADE)
-    imagen=models.ImageField(upload_to='portadas')
-'''
 
 class Autores(models.Model):
     nombre=models.CharField(max_length=50)

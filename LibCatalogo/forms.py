@@ -4,6 +4,8 @@ from django import forms
 from django.contrib.auth.forms import  UserCreationForm
 from django.contrib.auth.models import User
 from ckeditor.fields import RichTextField
+from ckeditor.widgets import CKEditorWidget
+
 
 import uuid
 
@@ -11,11 +13,9 @@ class LibrosForm(forms.Form):
     titulo = forms.CharField(max_length=50)
     genero = forms.CharField(max_length=50)
     autor = forms.CharField(max_length=50)
-    descripcion = RichTextField("contenido del post")
+    descripcion = forms.CharField(widget=CKEditorWidget())
     idioma = forms.CharField(max_length=50)
     portada= forms.ImageField(label="portada")
-    #def __str__(self):
-    #    return self.titulo+" "+self.genero
 
 class AutoresForm(forms.Form):
     nombre = forms.CharField(max_length=50)
