@@ -27,7 +27,4 @@
 ## Autores
 ![111462807](https://user-images.githubusercontent.com/111462807/188756747-f9b6fd89-083e-4479-86ef-d13f2bc274cc.png) <br><a href= https://github.com/SegWayGG/>Francisco Santillan</a>
 
-![89803587 jfif](https://user-images.githubusercontent.com/111462807/188757112-8f1414a6-6f37-42f8-99da-9b4c2a2b98ea.png)
-<br><a href= https://github.com/azkarashare/>Fernando Albano</a>
-
   
